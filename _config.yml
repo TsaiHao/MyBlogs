@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Zaijun's Blog 
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: Zaijun Hao
 language: en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://blog.zaijun.org
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -93,10 +93,7 @@ include:
 exclude:
 ignore:
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: landscape
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
