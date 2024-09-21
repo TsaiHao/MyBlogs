@@ -18,9 +18,12 @@ Reverse engineering is the process of analyzing a subject system to identify its
 
 ### Obtain APK
 
-Download apk file from the Internet or CIC website if have access. 
-
-*To be added: Instructions on how to obtain the APK from a device where the package is installed.*
+1. Download apk file from the Internet if available. 
+2. Retrieve the apk from installed Android devices:
+   ```bash
+   adb shell pm path com.example.app
+   adb pull PATH_OF_THE_BASE_APK
+   ```
 
 ### Decompile APK to smali code
 
@@ -52,7 +55,7 @@ String literals, such as trace names and log messages, remain the same in smali 
       }
 ```
 
-I could find the smali with command:
+Therefore, the corresponding smali class could be found with `ripgrep` command:
 
 ```bash
 $ rg '\"Failed to set playback params\"' -w -g "*.smali" ./reverse/release
@@ -60,11 +63,11 @@ $ rg '\"Failed to set playback params\"' -w -g "*.smali" ./reverse/release
 1882:    const-string v2, "Failed to set playback params"
 ```
 
-So, `J1.S` is obfuscated name for `androidx.media3.exoplayer.audio.DefaultAudioSink`.
+So, `J1.S` is the obfuscated name for `androidx.media3.exoplayer.audio.DefaultAudioSink`.
 
 #### 2. compare input parameters and return values
 
-The most efficient way to identify a smali function is to compare its input parameters and return value with candidate java functions.
+The most efficient way to identify a smali function is to compare its input parameters and return value with candidate java functions. It's rather useful when the target class has been located or search range has been narrowed down.
 
 For example, if we have a function:
 
